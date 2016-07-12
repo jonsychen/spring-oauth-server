@@ -1,6 +1,6 @@
 <%--
  * 
- * @author Shengzhao Li
+ * @author Jonsy
 --%>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -13,8 +13,8 @@
 
 </head>
 <body>
-<h2>Spring Security&Oauth2
-    <small class="badge" title="Version">0.5</small>
+<h2>API认证授权系统
+    <small class="badge" title="Version">0.1</small>
 </h2>
 
 <p>
@@ -39,20 +39,6 @@
                 ), Mobile 需要 [ROLE_MOBILE] 权限(resourceId:
                 <mark>mobile-resource</mark>
                 ).
-            </p>
-        </li>
-        <li>
-            <p>
-                在使用之前, 建议先了解OAuth2支持的5类<code>grant_type</code>, 请访问 <a href="https://andaily.com/blog/?p=103"
-                                                                       target="_blank">https://andaily.com/blog/?p=103</a>
-            </p>
-        </li>
-        <li>
-            <p>
-                在项目的 others目录里有 <a
-                    href="http://git.oschina.net/shengzhao/spring-oauth-server/blob/master/others/oauth_test.txt"
-                    target="_blank">oauth_test.txt</a>文件, 里面有测试的URL地址(包括浏览器与客户端的),<br/>
-                若想访问 Unity 与 Mobile, 则先用基于浏览器的测试URL 访问,等验证通过后即可访问(注意不同的账号对应的权限).
             </p>
         </li>
         <li>
