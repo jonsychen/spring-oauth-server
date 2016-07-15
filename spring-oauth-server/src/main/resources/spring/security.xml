@@ -6,7 +6,7 @@
              xmlns:mvc="http://www.springframework.org/schema/mvc"
              xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
                         http://www.springframework.org/schema/security
-                        http://www.springframework.org/schema/security/spring-security-4.0.xsd http://www.springframework.org/schema/security/oauth2 http://www.springframework.org/schema/security/spring-security-oauth2-2.0.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
+                        http://www.springframework.org/schema/security/spring-security.xsd http://www.springframework.org/schema/security/oauth2 http://www.springframework.org/schema/security/spring-security-oauth2-2.0.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 
     <!--<debug/>-->
 
@@ -57,7 +57,19 @@
           access-decision-manager-ref="oauth2AccessDecisionManager" use-expressions="false">
         <anonymous enabled="false"/>
 
-        <intercept-url pattern="/m/**" access="ROLE_MOBILE,SCOPE_READ"/>
+        <intercept-url pattern="/m/**" access="ROLE_MOBILE,SCOPE_READ"/>        
+
+        <custom-filter ref="mobileResourceServer" before="PRE_AUTH_FILTER"/>
+        <access-denied-handler ref="oauth2AccessDeniedHandler"/>
+        <csrf disabled="true"/>
+    </http>
+    
+        <!--new http configuration-->
+    <http pattern="/v1/**" create-session="never" entry-point-ref="oauth2AuthenticationEntryPoint"
+          access-decision-manager-ref="oauth2AccessDecisionManager" use-expressions="false">
+        <anonymous enabled="false"/>
+
+        <intercept-url pattern="/v1/**" access="ROLE_MOBILE,SCOPE_READ"/>        
 
         <custom-filter ref="mobileResourceServer" before="PRE_AUTH_FILTER"/>
         <access-denied-handler ref="oauth2AccessDeniedHandler"/>
